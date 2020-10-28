@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class GildedRoseTest {
 
     @Test
-    public void xxx() throws IOException {
+    public void xxx() {
         Item[] items = new Item[] { new Item("Book", 10, 5) };
         GildedRose app = new GildedRose(items);
 
