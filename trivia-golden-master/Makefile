@@ -2,7 +2,7 @@
 default: docker-run
 
 run:
-	mvn compile exec:java -Dexec.mainClass="GameRunner"
+	mvn compile -q exec:java -Dexec.mainClass="GameRunner"
 
 docker-build:
 	docker build .. -t codium-legacytraining
