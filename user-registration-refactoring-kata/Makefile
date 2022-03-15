@@ -2,10 +2,10 @@
 default: docker-test
 
 test:
-	mvn test clean
+	gradle :clean :test
 
 docker-build:
-	docker build .. -t codium-legacytraining
+	docker build -f ../Dockerfile.gradle -t codium-legacytraining:gradle .
 
 docker-test:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.m2:/root/.m2 -w /opt/project codium-legacytraining make test
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.m2:/root/.m2 -w /opt/project codium-legacytraining:gradle make test
