@@ -1,27 +1,12 @@
-import static org.junit.Assert.*;
-
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(Parameterized.class)
 public class TennisGameTest {
 
-    private int player1Score;
-    private int player2Score;
-    private String expectedScore;
-
-    public TennisGameTest(int player1Score, int player2Score, String expectedScore) {
-        this.player1Score = player1Score;
-        this.player2Score = player2Score;
-        this.expectedScore = expectedScore;
-    }
-    
-    @Parameters
     public static Collection<Object[]> getAllScores() {
         return Arrays.asList(new Object[][] {
                 { 0, 0, "Love-All" },
@@ -65,20 +50,23 @@ public class TennisGameTest {
         });
     }
 
-    public void checkAllScores(TennisGame game) {
-        int highestScore = Math.max(this.player1Score, this.player2Score);
-        for (int i = 0; i < highestScore; i++) {
-            if (i < this.player1Score)
-                game.wonPoint("player1");
-            if (i < this.player2Score)
-                game.wonPoint("player2");
-        }
-        assertEquals(this.expectedScore, game.getScore());
+    @ParameterizedTest
+    @MethodSource("getAllScores")
+    public void checkAllScoresTennisGame1(int player1Score, int player2Score, String expectedScore) {
+        TennisGame game = new TennisGame("player1", "player2");
+
+        playUntilExpectedScores(player1Score, player2Score, game);
+
+        assertEquals(expectedScore, game.getScore());
     }
 
-    @Test
-    public void checkAllScoresTennisGame1() {
-        TennisGame game = new TennisGame("player1", "player2");
-        checkAllScores(game);
+    private void playUntilExpectedScores(int player1Score, int player2Score, TennisGame game) {
+        int highestScore = Math.max(player1Score, player2Score);
+        for (int i = 0; i < highestScore; i++) {
+            if (i < player1Score)
+                game.wonPoint("player1");
+            if (i < player2Score)
+                game.wonPoint("player2");
+        }
     }
 }
