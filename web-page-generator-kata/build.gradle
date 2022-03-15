@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id "application"
+    id 'eclipse'
+    id 'idea'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    javaMainClass = "team.codium.legacytraining.Main"
+}
+
+application {
+    mainClassName = javaMainClass
+}
