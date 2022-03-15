@@ -2,7 +2,7 @@
 default: docker-run
 
 run:
-	mvn compile exec:java -Dexec.mainClass="team.codium.legacytraining.Main"
+	mvn compile exec:java
 	@echo "Webpage generated at html/users.html"
 
 docker-build:
