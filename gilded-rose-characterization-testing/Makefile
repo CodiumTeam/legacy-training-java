@@ -16,10 +16,10 @@ docker-build:
 	docker build -f ../Dockerfile.gradle -t codium-legacytraining .
 
 docker-test:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gralde:/gradle-cache -w /opt/project codium-legacytraining make test
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codium-legacytraining make test
 
 docker-coverage:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gralde:/gradle-cache -w /opt/project codium-legacytraining make coverage
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codium-legacytraining make coverage
 
 docker-mutation:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gralde:/gradle-cache -w /opt/project codium-legacytraining make mutation
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codium-legacytraining make mutation
