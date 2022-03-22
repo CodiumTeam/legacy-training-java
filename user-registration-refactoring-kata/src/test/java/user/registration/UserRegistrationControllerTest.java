@@ -1,21 +1,18 @@
 package user.registration;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserRegistrationControllerTest {
 
@@ -25,7 +22,7 @@ public class UserRegistrationControllerTest {
     @Autowired
     private TestRestTemplate testRestTemplate;
 
-    @Before
+    @BeforeEach
     public void setup() throws IOException {
         UserRegistrationController.orm = new UserOrmRepository();
     }
