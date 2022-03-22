@@ -1,3 +1,6 @@
-FROM maven:3.8-openjdk-17-slim
+FROM gradle:7.4.1-jdk17-alpine
 
-RUN apt update && apt install -y make && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache make
+
+ENV GRADLE_USER_HOME /gradle-cache
+ENV GRADLE_OPTS "-Dorg.gradle.daemon=false"

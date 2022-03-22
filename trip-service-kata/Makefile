@@ -9,10 +9,10 @@ coverage:
 	@printf "\nOpen build/reports/jacoco/test/html/index.html\n"
 
 docker-build:
-	docker build -f ../Dockerfile.gradle -t codium-legacytraining:gradle .
+	docker build -f ../Dockerfile.gradle -t codium-legacytraining .
 
 docker-test:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codium-legacytraining:gradle make test
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codium-legacytraining make test
 
 docker-coverage:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codium-legacytraining:gradle make coverage
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codium-legacytraining make coverage
