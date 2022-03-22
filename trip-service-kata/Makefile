@@ -2,17 +2,17 @@
 default: docker-test
 
 test:
-	mvn test
+	gradle :clean :test
 
-coverage: test
-	mvn jacoco:report
-	@printf "\nOpen target/site/jacoco/team.codium.legacycode.tripservice.trip/TripService.java.html\n"
+coverage:
+	gradle :clean :jacocoTestReport
+	@printf "\nOpen build/reports/jacoco/test/html/index.html\n"
 
 docker-build:
-	docker build .. -t codium-legacytraining
+	docker build -f ../Dockerfile.gradle -t codium-legacytraining:gradle .
 
 docker-test:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.m2:/root/.m2 -w /opt/project codium-legacytraining make test
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.m2:/root/.m2 -w /opt/project codium-legacytraining:gradle make test
 
 docker-coverage:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.m2:/root/.m2 -w /opt/project codium-legacytraining make coverage
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.m2:/root/.m2 -w /opt/project codium-legacytraining:gradle make coverage
