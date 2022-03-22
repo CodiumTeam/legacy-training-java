@@ -2,92 +2,75 @@ package user.registration;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
 
-import java.io.IOException;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import static org.assertj.core.api.BDDAssertions.then;
-
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(UserRegistrationController.class)
 public class UserRegistrationControllerTest {
-
-    @LocalServerPort
-    private int port;
-
     @Autowired
-    private TestRestTemplate testRestTemplate;
+    MockMvc mockMvc;
 
     @BeforeEach
-    public void setup() throws IOException {
+    public void setup() {
         UserRegistrationController.orm = new UserOrmRepository();
     }
 
     @Test
     public void should_success_when_everything_is_valid() throws Exception {
-        String arguments = "?name=Codium&email=my@email.com&password=myPass_123123";
-        String url = "http://localhost:" + this.port + "/users" + arguments;
+        String url = "/users?name=Codium&email=my@email.com&password=myPass_123123";
 
-        ResponseEntity<User> entity = this.testRestTemplate.postForEntity(url, null, User.class);
-
-        then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        mockMvc.perform(post(url))
+                .andExpect(status().isOk());
     }
+
     @Test
     public void should_returns_a_user_with_the_email_when_everything_is_valid() throws Exception {
-        String arguments = "?name=Codium&email=my@email.com&password=myPass_123123";
-        String url = "http://localhost:" + this.port + "/users" + arguments;
+        String url = "/users?name=Codium&email=my@email.com&password=myPass_123123";
 
-        ResponseEntity<User> entity = this.testRestTemplate.postForEntity(url, null, User.class);
-
-        then(entity.getBody().getEmail()).isEqualTo("my@email.com");
+        mockMvc.perform(post(url))
+                .andExpect(jsonPath("$.email").value("my@email.com"));
     }
 
     @Test
     public void should_returns_a_user_with_the_name_when_everything_is_valid() throws Exception {
-        String arguments = "?name=Codium&email=my@email.com&password=myPass_123123";
-        String url = "http://localhost:" + this.port + "/users" + arguments;
+        String url = "/users?name=Codium&email=my@email.com&password=myPass_123123";
 
-        ResponseEntity<User> entity = this.testRestTemplate.postForEntity(url, null, User.class);
-
-        then(entity.getBody().getName()).isEqualTo("Codium");
+        mockMvc.perform(post(url))
+                .andExpect(jsonPath("$.name").value("Codium"));
     }
 
     @Test
     public void should_fail_when_password_is_short() throws Exception {
-        String arguments = "?name=Codium&email=my@email.com&password=myPass_";
-        String url = "http://localhost:" + this.port + "/users" + arguments;
+        String url = "/users?name=Codium&email=my@email.com&password=myPass_";
 
-        ResponseEntity<String> entity = this.testRestTemplate.postForEntity(url, null, String.class);
-
-        then(entity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-        then(entity.getBody().toString()).isEqualTo("The password is not valid");
+        mockMvc.perform(post(url))
+                .andExpect(content().string("The password is not valid"));
     }
 
     @Test
     public void should_fail_when_email_is_used() throws Exception {
-        String arguments = "?name=Codium&email=same@email.com&password=myPass_123123";
-        String url = "http://localhost:" + this.port + "/users" + arguments;
-        this.testRestTemplate.postForEntity(url, null, String.class);
+        String url = "/users?name=Codium&email=same@email.com&password=myPass_123123";
+        mockMvc.perform(post(url));
 
-        ResponseEntity<String> entity = this.testRestTemplate.postForEntity(url, null, String.class);
-
-        then(entity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-        then(entity.getBody().toString()).isEqualTo("The email is already in use");
+        mockMvc.perform(post(url))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("The email is already in use"));
     }
 
 
     @Test
     public void should_generate_a_random_id_when_everything_is_valid() throws Exception {
-        String arguments = "?name=Codium&email=my@email.com&password=myPass_123123";
-        String url = "http://localhost:" + this.port + "/users" + arguments;
+        String url = "/users?name=Codium&email=my@email.com&password=myPass_123123";
 
-        ResponseEntity<User> entity = this.testRestTemplate.postForEntity(url, null, User.class);
-
-        then(entity.getBody().getId()).isNotEqualTo(1);
+        mockMvc.perform(post(url))
+                .andExpect(jsonPath("$.id").isNotEmpty());
     }
 
 }
