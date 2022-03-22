@@ -1,13 +1,8 @@
 package team.codium.legacytraining.gildedrose;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import static java.nio.file.Files.readAllBytes;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GildedRoseTest {
 
@@ -20,6 +15,5 @@ public class GildedRoseTest {
 
         assertEquals("Book", app.items[0].name);
     }
-
 
 }

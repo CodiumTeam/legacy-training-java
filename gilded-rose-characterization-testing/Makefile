@@ -2,24 +2,24 @@
 default: docker-test
 
 test:
-	mvn test
+	gradle :test
 
-coverage: test
-	mvn jacoco:report
-	@printf "\nOpen target/site/jacoco/team.codium.legacytraining.gildedrose/GildedRose.java.html\n"
+coverage:
+	gradle :jacocoTestReport
+	@printf "\nOpen build/reports/jacoco/test/html/index.html\n"
 
-mutation: test
-	mvn org.pitest:pitest-maven:mutationCoverage
-	@printf "\nOpen the last report on target/pit-reports\n"
+mutation:
+	gradle :pitest
+	@printf "\nOpen the last report on build/reports/pitest\n"
 
 docker-build:
-	docker build .. -t codium-legacytraining
+	docker build -f ../Dockerfile.gradle -t codium-legacytraining:gradle .
 
 docker-test:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.m2:/root/.m2 -w /opt/project codium-legacytraining make test
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gralde:/gradle-cache -w /opt/project codium-legacytraining:gradle make test
 
 docker-coverage:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.m2:/root/.m2 -w /opt/project codium-legacytraining make coverage
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gralde:/gradle-cache -w /opt/project codium-legacytraining:gradle make coverage
 
 docker-mutation:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.m2:/root/.m2 -w /opt/project codium-legacytraining make mutation
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gralde:/gradle-cache -w /opt/project codium-legacytraining:gradle make mutation
