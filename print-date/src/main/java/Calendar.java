@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public class Calendar {
-    Date today() {
+    public Date today() {
         return new Date();
     }
 }
