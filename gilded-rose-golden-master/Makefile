@@ -5,7 +5,7 @@ run:
 	gradle --quiet :run
 
 docker-build:
-	docker build -f ../Dockerfile.gradle -t codium-legacytraining .
+	docker build -f ../Dockerfile -t codiumteam/legacy-training-java .
 
 docker-run:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codium-legacytraining make run
+	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codiumteam/legacy-training-java make run
