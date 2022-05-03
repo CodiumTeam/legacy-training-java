@@ -1,4 +1,7 @@
-package team.codium.legacytraining.userregistration;
+package team.codium.legacytraining.userregistration.usecase;
+
+import team.codium.legacytraining.userregistration.domain.*;
+
 import java.util.Random;
 
 public class RegisterUser {
@@ -10,7 +13,7 @@ public class RegisterUser {
         this.userRepository = userRepository;
     }
 
-    User execute(String password, String emailAddress, String name) throws InvalidPasswordException, DuplicatedEmailException, EmailException {
+    public User execute(String password, String emailAddress, String name) throws InvalidPasswordException, DuplicatedEmailException, EmailException {
         if (password.length() <= 8 || !password.contains("_")) {
             throw new InvalidPasswordException();
 

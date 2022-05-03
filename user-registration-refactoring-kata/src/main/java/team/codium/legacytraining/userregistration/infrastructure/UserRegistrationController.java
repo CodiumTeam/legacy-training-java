@@ -1,9 +1,14 @@
-package team.codium.legacytraining.userregistration;
+package team.codium.legacytraining.userregistration.infrastructure;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import team.codium.legacytraining.userregistration.domain.DuplicatedEmailException;
+import team.codium.legacytraining.userregistration.domain.EmailException;
+import team.codium.legacytraining.userregistration.domain.InvalidPasswordException;
+import team.codium.legacytraining.userregistration.domain.User;
+import team.codium.legacytraining.userregistration.usecase.RegisterUser;
 
 import javax.servlet.http.HttpServletRequest;
 

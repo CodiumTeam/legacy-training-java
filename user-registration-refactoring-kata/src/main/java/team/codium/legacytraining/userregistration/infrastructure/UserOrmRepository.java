@@ -1,4 +1,7 @@
-package team.codium.legacytraining.userregistration;
+package team.codium.legacytraining.userregistration.infrastructure;
+
+import team.codium.legacytraining.userregistration.domain.User;
+import team.codium.legacytraining.userregistration.domain.UserRepository;
 
 import java.util.HashMap;
 

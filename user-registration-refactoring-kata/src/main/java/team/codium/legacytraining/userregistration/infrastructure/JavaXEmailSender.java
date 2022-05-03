@@ -1,4 +1,9 @@
-package team.codium.legacytraining.userregistration;
+package team.codium.legacytraining.userregistration.infrastructure;
+
+import team.codium.legacytraining.userregistration.domain.Email;
+import team.codium.legacytraining.userregistration.domain.EmailException;
+import team.codium.legacytraining.userregistration.domain.EmailSender;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;

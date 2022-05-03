@@ -1,4 +1,4 @@
-package team.codium.legacytraining.userregistration;
+package team.codium.legacytraining.userregistration.domain;
 public class Email {
     private final String from;
     private final String to;

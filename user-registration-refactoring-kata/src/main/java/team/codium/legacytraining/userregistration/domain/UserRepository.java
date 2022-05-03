@@ -1,4 +1,5 @@
-package team.codium.legacytraining.userregistration;
+package team.codium.legacytraining.userregistration.domain;
+
 
 public interface UserRepository {
     void save(User user);

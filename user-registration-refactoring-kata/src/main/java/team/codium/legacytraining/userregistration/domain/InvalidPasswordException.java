@@ -1,3 +1,3 @@
-package team.codium.legacytraining.userregistration;
+package team.codium.legacytraining.userregistration.domain;
 public class InvalidPasswordException extends Exception {
 }
