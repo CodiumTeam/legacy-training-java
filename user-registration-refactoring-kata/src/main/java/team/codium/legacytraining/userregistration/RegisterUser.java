@@ -3,9 +3,11 @@ import java.util.Random;
 
 public class RegisterUser {
     private final EmailSender emailSender;
+    private final UserRepository userRepository;
 
-    public RegisterUser(EmailSender emailSender) {
+    public RegisterUser(EmailSender emailSender, UserRepository userRepository) {
         this.emailSender = emailSender;
+        this.userRepository = userRepository;
     }
 
     User execute(String password, String emailAddress, String name) throws InvalidPasswordException, DuplicatedEmailException, EmailException {
@@ -14,9 +16,8 @@ public class RegisterUser {
 
         }
 
-        if (UserRegistrationController.orm.findByEmail(emailAddress) != null) {
+        if (userRepository.findByEmail(emailAddress) != null) {
             throw new DuplicatedEmailException();
-
         }
 
         User user = new User(
@@ -25,7 +26,7 @@ public class RegisterUser {
                 emailAddress,
                 password
         );
-        UserRegistrationController.orm.save(user);
+        userRepository.save(user);
 
         Email email = new Email("noreply@codium.team", emailAddress, "Welcome to Codium", "This is the confirmation email");
         emailSender.send(email);

@@ -14,7 +14,7 @@ public class UserRegistrationController {
     @PostMapping("/users")
     public ResponseEntity createUser(HttpServletRequest request) {
 
-        RegisterUser registerUser = new RegisterUser(new JavaXEmailSender());
+        RegisterUser registerUser = new RegisterUser(new JavaXEmailSender(), orm);
         try {
             User user = registerUser.execute(request.getParameter("password"), request.getParameter("email"), request.getParameter("name"));
             return ResponseEntity.ok(user);
