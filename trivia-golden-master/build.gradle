@@ -29,7 +29,7 @@ test {
 }
 
 ext {
-    javaMainClass = "GameRunner"
+    javaMainClass = "team.codium.legacytraining.trivia.GameRunner"
 }
 
 application {

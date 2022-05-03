@@ -29,7 +29,7 @@ test {
 }
 
 ext {
-    javaMainClass = "team.codium.legacytraining.gildedrose.Main"
+    javaMainClass = "team.codium.legacytraining.gildedrosegoldenmaster.Main"
 }
 
 application {
