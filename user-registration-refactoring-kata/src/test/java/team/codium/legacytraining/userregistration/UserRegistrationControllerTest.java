@@ -1,4 +1,4 @@
-package user.registration;
+package team.codium.legacytraining.userregistration;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

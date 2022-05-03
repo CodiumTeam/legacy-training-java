@@ -1,4 +1,4 @@
-package user.registration;
+package team.codium.legacytraining.userregistration;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

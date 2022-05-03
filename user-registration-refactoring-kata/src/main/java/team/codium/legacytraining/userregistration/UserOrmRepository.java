@@ -1,4 +1,4 @@
-package user.registration;
+package team.codium.legacytraining.userregistration;
 
 import java.util.HashMap;
 
