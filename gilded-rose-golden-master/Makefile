@@ -2,7 +2,7 @@
 default: docker-run
 
 run:
-	gradle --quiet :run
+	../gradlew --quiet :run
 
 docker-build:
 	docker build -f ../Dockerfile -t codiumteam/legacy-training-java .

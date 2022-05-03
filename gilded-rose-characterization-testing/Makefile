@@ -2,14 +2,14 @@
 default: docker-test
 
 test:
-	gradle :test
+	../gradlew :test
 
 coverage:
-	gradle :jacocoTestReport
+	../gradlew :jacocoTestReport
 	@printf "\nOpen build/reports/jacoco/test/html/index.html\n"
 
 mutation:
-	gradle :pitest
+	../gradlew :pitest
 	@printf "\nOpen the last report on build/reports/pitest\n"
 
 docker-build:
