@@ -1,6 +1,6 @@
-package team.codium.legacycode.tripservice.user;
+package team.codium.legacytraining.tripservice.user;
 
-import team.codium.legacycode.tripservice.exception.CollaboratorCallException;
+import team.codium.legacytraining.tripservice.exception.CollaboratorCallException;
 
 public class UserSession {
 

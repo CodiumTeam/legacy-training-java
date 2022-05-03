@@ -1,4 +1,4 @@
-package team.codium.legacycode.tripservice.trip;
+package team.codium.legacytraining.tripservice.trip;
 
 
 import org.junit.jupiter.api.Test;

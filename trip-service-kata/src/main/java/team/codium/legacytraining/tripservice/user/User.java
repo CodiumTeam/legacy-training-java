@@ -1,9 +1,9 @@
-package team.codium.legacycode.tripservice.user;
+package team.codium.legacytraining.tripservice.user;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import team.codium.legacycode.tripservice.trip.Trip;
+import team.codium.legacytraining.tripservice.trip.Trip;
 
 public class User {
 

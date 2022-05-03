@@ -1,7 +1,7 @@
-package team.codium.legacycode.tripservice.trip;
+package team.codium.legacytraining.tripservice.trip;
 
-import team.codium.legacycode.tripservice.exception.CollaboratorCallException;
-import team.codium.legacycode.tripservice.user.User;
+import team.codium.legacytraining.tripservice.exception.CollaboratorCallException;
+import team.codium.legacytraining.tripservice.user.User;
 
 import java.util.List;
 

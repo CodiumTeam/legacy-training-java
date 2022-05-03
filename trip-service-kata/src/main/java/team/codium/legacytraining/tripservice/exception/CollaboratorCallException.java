@@ -1,4 +1,4 @@
-package team.codium.legacycode.tripservice.exception;
+package team.codium.legacytraining.tripservice.exception;
 
 public class CollaboratorCallException extends RuntimeException {
 

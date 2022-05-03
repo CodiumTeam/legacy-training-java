@@ -1,8 +1,8 @@
-package team.codium.legacycode.tripservice.trip;
+package team.codium.legacytraining.tripservice.trip;
 
-import team.codium.legacycode.tripservice.user.User;
-import team.codium.legacycode.tripservice.user.UserSession;
-import team.codium.legacycode.tripservice.exception.UserNotLoggedInException;
+import team.codium.legacytraining.tripservice.user.User;
+import team.codium.legacytraining.tripservice.user.UserSession;
+import team.codium.legacytraining.tripservice.exception.UserNotLoggedInException;
 
 import java.util.ArrayList;
 import java.util.List;
