@@ -1,10 +1,9 @@
 package team.codium.legacytraining.weather;
 
-import java.io.IOException;
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
-import team.codium.legacytraining.weather.Forecast;
+
+import java.io.IOException;
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,7 +12,7 @@ public class WeatherKataTest {
 
     @Test
     public void xxx() throws IOException {
-        new Forecast().predict("Madrid", new Date(), false);
+        new Forecast().predict("Madrid", LocalDate.now(), false);
         assertTrue(true);
     }
 }
