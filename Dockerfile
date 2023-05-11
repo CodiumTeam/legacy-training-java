@@ -13,4 +13,4 @@ COPY gradle/wrapper/* /code/gradle/wrapper
 
 WORKDIR /code/kata
 
-VOLUME ["/code", "/code/gradle", "/code/build"]
+VOLUME ["/code", "/code/gradle", "/code/kata/build"]
