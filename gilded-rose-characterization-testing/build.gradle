@@ -36,6 +36,6 @@ jacocoTestReport {
 pitest {
     junit5PluginVersion = '0.15'
     timestampedReports = false
-    targetClasses = ['team.codium.legacytraining.gildedrose.*']
-    targetTests = ['team.codium.legacytraining.gildedrose.*']
+    targetClasses = ['team.codium.legacytraining.gildedrosecharacterization.*']
+    targetTests = ['team.codium.legacytraining.gildedrosecharacterization.*']
 }
