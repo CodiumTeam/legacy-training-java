@@ -61,18 +61,29 @@ function validateMake() {
       echo "Ok"
     fi
 }
+echo "Without docker"
+validateKata web-page-generator-kata "cd web-page-generator-kata" "make run"
+validateKata tennis-refactoring-kata "cd tennis-refactoring-kata" "make test"
+validateKata user-registration-refactoring-kata "cd user-registration-refactoring-kata" "make test"
+validateKata gilded-rose-characterization-testing "cd gilded-rose-characterization-testing" "make docker-coverage" "make mutation"
+validateKata weather-kata "cd weather-kata" "make docker-test" "make coverage"
+validateKata trip-service-kata "cd trip-service-kata" "make docker-test" "make coverage"
+validateKata trivia-golden-master "cd trivia-golden-master" "make run"
+validateKata gilded-rose-golden-master "cd gilded-rose-golden-master" "make run"
+validateKata print-date "cd print-date" "make test"
 
+echo -n "With docker"
 validateDocker
 validateMake
-validateKata web-page-generator-kata "cd web-page-generator-kata" "make docker-run"
-validateKata tennis-refactoring-kata "cd tennis-refactoring-kata" "make docker-test"
-validateKata user-registration-refactoring-kata "cd user-registration-refactoring-kata" "make docker-test"
-validateKata gilded-rose-characterization-testing "cd gilded-rose-characterization-testing" "make docker-coverage" "make docker-mutation"
-validateKata weather-kata "cd weather-kata" "make docker-test" "make docker-coverage"
-validateKata trip-service-kata "cd trip-service-kata" "make docker-test" "make docker-coverage"
-validateKata trivia-golden-master "cd trivia-golden-master" "make docker-run"
-validateKata gilded-rose-golden-master "cd gilded-rose-golden-master" "make docker-run"
-validateKata print-date "cd print-date" "make docker-test"
+validateKata docker-web-page-generator-kata "cd web-page-generator-kata" "make docker-run"
+validateKata docker-tennis-refactoring-kata "cd tennis-refactoring-kata" "make docker-test"
+validateKata docker-user-registration-refactoring-kata "cd user-registration-refactoring-kata" "make docker-test"
+validateKata docker-gilded-rose-characterization-testing "cd gilded-rose-characterization-testing" "make docker-coverage" "make docker-mutation"
+validateKata docker-weather-kata "cd weather-kata" "make docker-test" "make docker-coverage"
+validateKata docker-trip-service-kata "cd trip-service-kata" "make docker-test" "make docker-coverage"
+validateKata docker-trivia-golden-master "cd trivia-golden-master" "make docker-run"
+validateKata docker-gilded-rose-golden-master "cd gilded-rose-golden-master" "make docker-run"
+validateKata docker-print-date "cd print-date" "make docker-test"
 
 if [ -z "$ERROR" ]; then
   echo "Congratulations! You are ready for the training!"
