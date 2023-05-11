@@ -71,7 +71,7 @@ validateKata gilded-rose-characterization-testing "cd gilded-rose-characterizati
 validateKata weather-kata "cd weather-kata" "make docker-test" "make docker-coverage"
 validateKata trip-service-kata "cd trip-service-kata" "make docker-test" "make docker-coverage"
 validateKata trivia-golden-master "cd trivia-golden-master" "make docker-run"
-#validateKata gilded-rose-golden-master "cd gilded-rose-golden-master" "make docker-run"
+validateKata gilded-rose-golden-master "cd gilded-rose-golden-master" "make docker-run"
 #validateKata print-date "cd print-date" "make docker-test"
 
 if [ -z "$ERROR" ]; then
