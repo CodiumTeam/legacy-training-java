@@ -2,11 +2,11 @@
 default: docker-run
 
 run:
-	gradle --quiet :run
+	../gradlew --quiet :build :run
 	@echo "Webpage generated at html/users.html"
 
 docker-build:
-	docker build -f ../Dockerfile -t codiumteam/legacy-training-java .
+	docker build -f ../Dockerfile -t codiumteam/legacy-training-java ..
 
 docker-run:
-	docker run --rm -v ${PWD}:/opt/project -v ${PWD}/../.gradle:/gradle-cache -w /opt/project codiumteam/legacy-training-java make run
+	docker run --rm -v ${PWD}:/code/kata -v ${PWD}/../.gradle:/gradle-cache codiumteam/legacy-training-java make run
