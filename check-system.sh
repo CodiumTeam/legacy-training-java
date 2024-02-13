@@ -29,7 +29,7 @@ function validateDocker() {
     fi
 
     echo -n "Creating the docker image..."
-    (docker build . -t codiumteam/legacy-training-java) > /dev/null
+    (docker pull codiumteam/legacy-training-java) > /dev/null
     if [ $? -ne 0 ]; then
       echo "Error"
       echo "Do you have internet connection?"
