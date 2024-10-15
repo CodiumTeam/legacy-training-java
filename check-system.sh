@@ -28,7 +28,7 @@ function validateDocker() {
       echo "Ok"
     fi
 
-    echo -n "Creating the docker image..."
+    echo -n "Downloading the docker image..."
     (docker pull codiumteam/legacy-training-java) > /dev/null
     if [ $? -ne 0 ]; then
       echo "Error"
