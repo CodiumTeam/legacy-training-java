@@ -28,12 +28,11 @@ public class Forecast {
             HttpRequestFactory requestFactory
                     = new NetHttpTransport().createRequestFactory();
             HttpRequest request = requestFactory.buildGetRequest(
-                    new GenericUrl("https://api.api-ninjas.com/v1/geocoding?city=" + city));
-            request.getHeaders().set("X-Api-Key", "GZmFvwGzDO1X365MONdH4A==ZCVTopwueIVfYrKN");
+                    new GenericUrl("https://positionstack.com/geo_api.php?query=" + city));
             String rawResponse = request.execute().parseAsString();
-            JSONArray jsonObject = new JSONArray(rawResponse);
-            float latitude = jsonObject.getJSONObject(0).getFloat("latitude");
-            float longitude = jsonObject.getJSONObject(0).getFloat("longitude");
+            JSONObject jsonObject = new JSONObject(rawResponse);
+            float latitude = jsonObject.getJSONArray("data").getJSONObject(0).getFloat("latitude");
+            float longitude = jsonObject.getJSONArray("data").getJSONObject(0).getFloat("longitude");
 
             // Find the predictions for the location
             requestFactory = new NetHttpTransport().createRequestFactory();
