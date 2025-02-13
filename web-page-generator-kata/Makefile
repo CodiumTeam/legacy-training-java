@@ -2,7 +2,7 @@
 default: docker-run
 
 run:
-	../gradlew --quiet :build :run
+	../gradlew --quiet :build :run --no-daemon
 	@echo "Webpage generated at html/users.html"
 
 docker-run:

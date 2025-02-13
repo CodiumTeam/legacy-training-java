@@ -3,13 +3,12 @@ plugins {
     id 'jacoco'
     id 'eclipse'
     id 'idea'
-    id 'info.solidsoft.pitest' version '1.7.4'
+    id 'info.solidsoft.pitest' version '1.15.0'
 }
 
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -35,7 +34,7 @@ jacocoTestReport {
 }
 
 pitest {
-    junit5PluginVersion = '0.15'
+    junit5PluginVersion = '1.0.0'
     timestampedReports = false
     targetClasses = ['team.codium.legacytraining.gildedrosecharacterization.*']
     targetTests = ['team.codium.legacytraining.gildedrosecharacterization.*']

@@ -1,9 +1,9 @@
-FROM gradle:7.4.1-jdk17-alpine
+FROM gradle:8.4.0-jdk21-alpine
 
 RUN apk add --no-cache make
 
-ENV GRADLE_USER_HOME /gradle-cache
-ENV GRADLE_OPTS "-Dorg.gradle.daemon=false"
+ENV GRADLE_USER_HOME=/gradle-cache
+ENV GRADLE_OPTS="-Dorg.gradle.daemon=false"
 
 RUN mkdir -p /code/kata
 
